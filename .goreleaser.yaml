@@ -15,7 +15,7 @@ archives:
   - format_overrides:
     - goos: windows
       format: zip
-    file_name_template: >-
+    name_template: >-
       {{- .ProjectName }}_
       {{- if eq .Os "darwin" }}macOS
       {{- else if eq .Os "linux" }}Linux
