@@ -15,7 +15,7 @@ archives:
   - format_overrides:
     - goos: windows
       format: zip
-    replacements:
+    name_template:
       darwin: macOS
       linux: Linux
       windows: Windows
