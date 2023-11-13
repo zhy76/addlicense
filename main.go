@@ -289,9 +289,11 @@ func licenseHeader(path string, tmpl *template.Template, data licenseData) ([]by
 	base := strings.ToLower(filepath.Base(path))
 
 	switch fileExtension(base) {
+	case ".go":
+		lic, err = executeTemplate(tmpl, data, "/*", "", " */")
 	case ".c", ".h", ".gv", ".java", ".scala", ".kt", ".kts":
 		lic, err = executeTemplate(tmpl, data, "/*", " * ", " */")
-	case ".js", ".mjs", ".cjs", ".jsx", ".tsx", ".css", ".scss", ".sass", ".ts", ".go":
+	case ".js", ".mjs", ".cjs", ".jsx", ".tsx", ".css", ".scss", ".sass", ".ts":
 		lic, err = executeTemplate(tmpl, data, "/**", " * ", " */")
 	case ".cc", ".cpp", ".cs", ".hcl", ".hh", ".hpp", ".m", ".mm", ".proto", ".rs", ".swift", ".dart", ".groovy", ".v", ".sv":
 		lic, err = executeTemplate(tmpl, data, "", "// ", "")
